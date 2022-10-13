@@ -1,10 +1,12 @@
 import { TOKEN, WEB_URL } from './tokens.js'
 import TelegramBot from 'node-telegram-bot-api';
-
+import express from 'express'
+import cors from 'cors'
 
 
 const bot = new TelegramBot(TOKEN, { polling: true });
-
+const app = express();
+app.use(cors())
 
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
@@ -42,4 +44,29 @@ bot.on('message', async (msg) => {
 
 
 });
+
+app.post('/web-data', async (req, res) => {
+    const {queryId, products, totalCost} = req.body;
+    try {
+        await bot.answerCallbackQuery(queryId, {
+            type: 'article',
+            id: queryId,
+            title: 'Succes purchase',
+            input_message_content: {message_text: "Succes purchase, total cost" + totalCost}
+        })
+        return res.status(200).json({})
+    } catch (error) {
+        await bot.answerCallbackQuery(queryId, {
+            type: 'article',
+            id: queryId,
+            title: 'Succes purchase',
+            input_message_content: {message_text: "Anything wrong whith buy"}
+        })
+        return res.status(500).json({})
+    }
+    
+})
+
+const PORT = 8000;
+app.listen(PORT, () => console.log('Server OK, Port: ' + PORT))
 
