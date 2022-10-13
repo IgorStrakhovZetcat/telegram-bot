@@ -2,10 +2,27 @@
   "scripts": {
     "start": "nodemon index.js"
   },
+  "type": "module",
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "es6-set": "^0.1.6",
     "node-telegram-bot-api": "^0.59.0"
-  }
+  },
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorStrakhovZetcat/telegram-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorStrakhovZetcat/telegram-bot/issues"
+  },
+  "homepage": "https://github.com/IgorStrakhovZetcat/telegram-bot#readme",
+  "keywords": [],
+  "description": ""
 }
