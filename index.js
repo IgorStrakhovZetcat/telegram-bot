@@ -6,6 +6,7 @@ import cors from 'cors'
 
 const bot = new TelegramBot(TOKEN, { polling: true });
 const app = express();
+app.use(express.json())
 app.use(cors())
 
 bot.on('message', async (msg) => {
@@ -46,22 +47,18 @@ bot.on('message', async (msg) => {
 });
 
 app.post('/web-data', async (req, res) => {
-    const {queryId, products, totalCost} = req.body;
+    const {queryId, products = [], totalCost} = req.body;
     try {
-        await bot.answerCallbackQuery(queryId, {
+        await bot.answerWebAppQuery(queryId, {
             type: 'article',
             id: queryId,
             title: 'Succes purchase',
-            input_message_content: {message_text: "Succes purchase, total cost" + totalCost}
+            input_message_content: {
+                message_text: "Succes purchase, total cost" + totalCost
+            }
         })
         return res.status(200).json({})
     } catch (error) {
-        await bot.answerCallbackQuery(queryId, {
-            type: 'article',
-            id: queryId,
-            title: 'Succes purchase',
-            input_message_content: {message_text: "Anything wrong whith buy"}
-        })
         return res.status(500).json({})
     }
     
