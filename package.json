@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.59.0"
+  }
+}
