@@ -23,7 +23,7 @@ bot.on('message', async (msg) => {
             }
         })
 
-        await bot.sendMessage(chatId, 'Go to order', {
+        await bot.sendMessage(chatId, 'Go to menu', {
             reply_markup: {
                 inline_keyboard: [
                     [{ text: 'To order', web_app: { url: WEB_URL } }]
