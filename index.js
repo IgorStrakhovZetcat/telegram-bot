@@ -18,12 +18,12 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Fill out the form', {
             reply_markup: {
                 keyboard: [
-                    [{ text: 'Form', web_app: { url: WEB_URL + '/form' } }]
+                    [{ text: 'Form address', web_app: { url: WEB_URL + '/form' } }]
                 ]
             }
         })
 
-        await bot.sendMessage(chatId, 'Go to website', {
+        await bot.sendMessage(chatId, 'Go to order', {
             reply_markup: {
                 inline_keyboard: [
                     [{ text: 'To order', web_app: { url: WEB_URL } }]
